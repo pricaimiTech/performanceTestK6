@@ -7,17 +7,14 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 
-// const RAMP_TIME = __ENV.RAMP_TIME || '1s'
-// const RUN_TIME = __ENV.RUN_TIME || '2s'
-// const USER_COUNT = __ENV.USER_COUNT || 20
-// const SLEEP = __ENV.SLEEP || 0.5
-
 export let options = {
     stages: [
-        { duration: '0m3s', target: 20 },
-        { duration: '0m3s', target: 20 },
-        { duration: '0m3s', target: 0 },
+        { duration: '3s', target: 20 }
     ],
+    thresholds: {
+        http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+        http_req_duration: ['p(90) < 400', 'p(95) < 800', 'p(99.9) < 2000'] // 90% of requests must finish within 400ms, 95% within 800, and 99.9% within 2s.
+    },
 };
 
 export default function () {
@@ -28,7 +25,7 @@ export default function () {
 
 export function handleSummary(data) {
     return {
-      'summary.html': htmlReport(data, { debug: false }),
-      stdout: textSummary(data, { indent: ' ', enableColors: true }),
+        'summary.html': htmlReport(data, { debug: false }),
+        stdout: textSummary(data, { indent: ' ', enableColors: true }),
     }
-  }
+}
