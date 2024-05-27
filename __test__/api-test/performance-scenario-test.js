@@ -9,14 +9,11 @@ import { check, sleep } from 'k6';
 const TARGET_URL = __ENV.TEST_TARGET || 'https://test-api.k6.io/public/crocodiles/'
 const RAMP_TIME = __ENV.RAMP_TIME || '1s'
 const RUN_TIME = __ENV.RUN_TIME || '2s'
+const RAMP_DOWN = __ENV.RAMP_TIME || '1s'
 const USER_COUNT = __ENV.USER_COUNT || 10
 const SLEEP = __ENV.SLEEP || 0.5
 
 export let options = {
-    stages: [
-        { duration: RAMP_TIME, target: USER_COUNT },
-        { duration: RUN_TIME, target: USER_COUNT },
-      ],
       /**
        * To assess the login endpoint’s performance, your team may have defined service level objectives (SLOs). For example:
             99% of requests should be successful
@@ -24,8 +21,23 @@ export let options = {
        */
       thresholds: {
         http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-        http_req_duration: ['p(99)<1000'] // 99% of requests should be below 1s
+        http_req_duration: ['p(90) < 400', 'p(95) < 800', 'p(99.9) < 2000'] // 90% of requests must finish within 400ms, 95% within 800, and 99.9% within 2s.
       },
+    // define scenarios
+    scenarios: {
+      // arbitrary name of scenario
+      average_load: {
+        executor: 'ramping-vus',
+        stages: [
+          // ramp up to average load of 20 virtual users
+          { duration: RAMP_TIME, target: USER_COUNT },
+          // maintain load
+          { duration: RUN_TIME, target: USER_COUNT },
+          // ramp down to zero
+          { duration: RAMP_DOWN, target: USER_COUNT },
+        ],
+      },
+    }
 };
 
 export default function () {
