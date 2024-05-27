@@ -44,3 +44,7 @@ Os resultados dos testes serão salvos na pasta results. Você pode especificar 
 ```
 k6 run --out json=results/api-load-test-results.json api-tests/load-test.js
 ```
+
+### Conheça os tipos de teste 
+
+Acesse a documentação do [k6](https://grafana.com/docs/k6/latest/testing-guides/test-types/)
