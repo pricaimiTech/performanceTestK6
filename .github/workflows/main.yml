@@ -1,19 +1,11 @@
-name: Run Tests
-
-# Define as permissões necessárias para este workflow
-permissions:
-  contents: write  # Permite operações de escrita
-
-# Define os eventos que acionam o workflow
-on:
-  push:
-    branches:
-      - main  # Aciona para a branch 'main'
+name: Basic Workflow
+on: [push]
 
 jobs:
-  test:
-    name: Run k6 test
+  k6_local_test:
+    name: k6 local test run - basic example
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -22,32 +14,10 @@ jobs:
         uses: grafana/k6-action@v0.2.0
         with:
           filename: __test__/api-test/load-test.js
-          flags: --out json=report/jsonOutput/load-test.json
+          flags: --out json=load-test.json
 
-          
-      - name: Archive Test Report
-        uses: actions/upload-artifact@v4  # Certifique-se de usar a versão correta
+      - name: Upload performance test results
+        uses: actions/upload-artifact@v3
         with:
-          name: test-report
-          path: report/  # Arquivo de cobertura gerado pelo Jest
-  
-      - name: Create 'docs' Directory
-        run: mkdir -p docs  # Cria a pasta 'docs' se não existir
-  
-      - name: Create .nojekyll File
-        run: touch docs/.nojekyll
-  
-      - name: Copy Report to 'docs'
-        run: cp -r coverage/* docs/  # Copia o conteúdo para 'docs'
-  
-      - name: Create '.nojekyll' File
-        run: touch docs/.nojekyll  # Desativa o Jekyll para evitar problemas de conversão
-  
-      - name: Publish test coverage report
-        uses: EndBug/add-and-commit@v4
-        with:
-          add: docs
-          force: true
-          message: "Add generated docs"  # Mensagem para o commit
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Para autenticação no GitH
+          name: k6-report
+          path: load-test.json
