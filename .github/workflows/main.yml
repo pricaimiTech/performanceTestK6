@@ -10,13 +10,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Create dir for report
-        run: mkdir report/html-report/
-
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
         with:
           filename: __test__/api-test/load-test.js
+
+      - name: Create dir for report
+        run: mkdir report/html-report/
 
       - name: Store performance test results
         uses: actions/upload-artifact@v3
