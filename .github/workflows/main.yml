@@ -25,7 +25,6 @@ jobs:
           npm install
       - name: Start server and run tests
         run: |
-          npm start & npx wait-on http://localhost:3000
           k6 run --out json=report/jsonOutput/load-test.json __test__/api-test/load-test.js
           
       - name: Archive Test Report
