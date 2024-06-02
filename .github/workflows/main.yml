@@ -15,9 +15,6 @@ jobs:
         with:
           filename: __test__/api-test/load-test.js
 
-      - name: Create dir for report
-        run: mkdir report/html-report/
-
       - name: Store performance test results
         uses: actions/upload-artifact@v3
         with:
