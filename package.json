@@ -4,12 +4,15 @@
   "description": "Este projeto contém scripts para realizar testes de performance e carga utilizando o k6 em APIs e aplicações web.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bash __test__/start.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/k6": "^0.51.0"
+  },
+  "devDependencies": {
+    "k6-html-reporter": "^1.0.5"
   }
 }

@@ -17,34 +17,26 @@ Este projeto contém scripts para realizar testes de performance e carga utiliza
 
 Para executar os testes, utilize os seguintes comandos no terminal:
 
-API Load Test
+Para rodar os testes unitáriamente utilizar o comando
 
 ```
 k6 run api-tests/load-test.js
 ```
 
-API Performance Test
+Caso deseje rodar todos os testes com um único comando, basta rodar o arquivo shell
 
 ```
-k6 run api-tests/performance-test.js
-```
-Web Load Test
-```
-k6 run web-tests/load-test.js
-```
-
-Web Performance Test
-```
-k6 run web-tests/performance-test.js
+yarn run test
 ```
 
 ### Análise de Resultados
+
 Os resultados dos testes serão salvos na pasta results. Você pode especificar o formato de saída utilizando a opção --out do k6. Por exemplo, para salvar o resultado em formato JSON:
 
 ```
-k6 run --out json=results/api-load-test-results.json api-tests/load-test.js
+k6 run --out json=report/jsonOutput/load-test.json api-tests/load-test.js
 ```
 
-### Conheça os tipos de teste 
+### Conheça os tipos de teste
 
 Acesse a documentação do [k6](https://grafana.com/docs/k6/latest/testing-guides/test-types/)

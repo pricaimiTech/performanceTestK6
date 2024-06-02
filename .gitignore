@@ -5,4 +5,6 @@ results/*
 node_modules/
 tests/*.json
 tests/*.html
-summary.html
+report/html-report/*
+report/jsonOutput/*
+report/screenshots/*
