@@ -1,9 +1,9 @@
-name: Basic Workflow
+name: Summary Workflow
 on: [push]
 
 jobs:
   k6_local_test:
-    name: k6 local test run - basic example
+    name: k6 local test run - summary example
     runs-on: ubuntu-latest
 
     steps:
@@ -14,10 +14,9 @@ jobs:
         uses: grafana/k6-action@v0.2.0
         with:
           filename: __test__/api-test/load-test.js
-          flags: --out json=load-test.json
 
-      - name: Upload performance test results
+      - name: Store performance test results
         uses: actions/upload-artifact@v3
         with:
-          name: k6-report
-          path: load-test.json
+          name: k6-summary-report
+          path: report/html-report/load-test.html
