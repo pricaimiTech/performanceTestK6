@@ -1,6 +1,8 @@
 # Projeto de Testes de Performance com k6
 
-[![Load API Test with K6](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/main.yml/badge.svg)](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/main.yml)
+[![Load API Test with K6](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/load-test.yml/badge.svg)](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/load-test.yml)
+[![Average-load with K6](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/averageLoad-scenario-test.yml/badge.svg)](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/averageLoad-scenario-test.yml)
+[![Breakpoint with K6](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/breakpoint-test.yml/badge.svg)](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/breakpoint-test.yml)
 
 Este projeto contém scripts para realizar testes de performance e carga utilizando o k6 em APIs e aplicações web.
 
