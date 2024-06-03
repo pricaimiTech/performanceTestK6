@@ -1,4 +1,4 @@
-name: Testes de Performance com K6
+name: Load API Test with K6
 on: [push]
 
 jobs:
@@ -17,12 +17,14 @@ jobs:
           flags: --out json=load-test.json
 
       - name: Upload performance test results
+        if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: k6-report-apí-load-test-json
           path: load-test.json
 
       - name: Upload performance test results
+        if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: k6-report-apí-load-test-html
