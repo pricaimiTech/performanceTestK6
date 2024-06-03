@@ -1,0 +1,32 @@
+
+name: Average-load with K6
+on: [push]
+
+jobs:
+  k6_local_test:
+    name: Load API Test with K6
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Run __test__/api-test/averageLoad-scenario-test.js
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: __test__/api-test/averageLoad-scenario-test.js
+          flags: --out json=averageLoad-scenario-test.json
+
+      - name: Upload performance test results
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-report-apí-load-test-json
+          path: averageLoad-scenario-test.json
+
+      - name: Upload performance test results
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-report-apí-load-test-html
+          path: averageLoad-scenario-test.html
