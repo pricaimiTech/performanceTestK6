@@ -1,5 +1,6 @@
 /**
  * https://github.com/benc-uk/k6-reporter/blob/main/tests/grpc.js
+ * Breakpoint tests gradually increase load to identify the capacity limits of the system.
  */
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 import { textSummary } from "https://jslib.k6.io/k6-summary/0.0.1/index.js";
@@ -9,7 +10,7 @@ import { check, sleep } from "k6";
 const TARGET_URL =
   __ENV.TEST_TARGET || "https://test-api.k6.io/public/crocodiles/";
 const RAMP_TIME = __ENV.RAMP_TIME || "1s";
-const RUN_TIME = __ENV.RUN_TIME || "2s";
+const RUN_TIME = __ENV.RUN_TIME || "10s";
 const USER_COUNT = __ENV.USER_COUNT || 10;
 const SLEEP = __ENV.SLEEP || 0.5;
 
