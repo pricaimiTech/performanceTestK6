@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   k6_local_test:
-    name: k6 local test run - summary example
+    name: Load API Test with K6
     runs-on: ubuntu-latest
 
     steps:
