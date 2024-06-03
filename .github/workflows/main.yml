@@ -10,13 +10,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Run local k6 test
+      - name: Run __test__/api-test/load-test.js
         uses: grafana/k6-action@v0.2.0
         with:
           filename: __test__/api-test/load-test.js
+          flags: --out json=load-test.json
 
       - name: Upload performance test results
         uses: actions/upload-artifact@v3
         with:
-          name: k6-report
+          name: k6-report-apí-load-test-json
+          path: load-test.json
+
+      - name: Upload performance test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-report-apí-load-test-html
           path: load-test.html
+
