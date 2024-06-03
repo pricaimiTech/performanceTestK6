@@ -38,7 +38,7 @@ export default function () {
 
 export function handleSummary(data) {
   return {
-    "report/html-report/performance.html": htmlReport(data, { debug: false }),
+    "breakpoint-test.html": htmlReport(data, { debug: false }),
     stdout: textSummary(data, { indent: " ", enableColors: true }),
   };
 }

@@ -52,7 +52,7 @@ export default function () {
 
 export function handleSummary(data) {
   return {
-    "report/html-report/performanceScenario.html": htmlReport(data, {
+    "performanceScenario.html": htmlReport(data, {
       debug: false,
     }),
     stdout: textSummary(data, { indent: " ", enableColors: true }),
