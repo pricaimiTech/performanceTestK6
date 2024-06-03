@@ -1,11 +1,13 @@
 # Projeto de Testes de Performance com k6
 
+[![Load API Test with K6](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/main.yml/badge.svg)](https://github.com/pricaimiTech/performanceTestK6/actions/workflows/main.yml)
+
 Este projeto contém scripts para realizar testes de performance e carga utilizando o k6 em APIs e aplicações web.
 
 ## Estrutura do Projeto
 
 - `api-tests/` - Scripts de teste para APIs
-  - `load-test.js` - Teste de carga para API
+  - `load-test.js` - Teste de carga para API 
   - `performance-test.js` - Teste de performance para API
 - `web-tests/` - Scripts de teste para aplicações web
   - `load-test.js` - Teste de carga para web
