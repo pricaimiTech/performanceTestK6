@@ -1,0 +1,32 @@
+
+name: TDC Floripa
+on: [push]
+
+jobs:
+  k6_local_test:
+    name: Load API Test with K6
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Run __test__/tdc/averageLoad-scenario-test.js
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: __test__/tdc/averageLoad-scenario-test.js
+          flags: --out json=results/jsonOutput/averageLoad-scenario-test.json
+
+      - name: Run __test__/tdc/load-api-browser-test.js
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: __test__/tdc/averageLoad-scenario-test.js
+          flags: --out json=results/jsonOutput/load-api-browser-test.json
+
+      - name: Upload folder performance test results
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-report-apí-load-test-json
+          path: results/
+
