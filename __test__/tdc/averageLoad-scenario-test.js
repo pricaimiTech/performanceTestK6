@@ -1,6 +1,6 @@
 /**
  * https://github.com/benc-uk/k6-reporter/blob/main/tests/grpc.js
- * Smoke tests validate that your script works and that the system performs adequately under minimal load.
+ * Average-load test assess how your system performs under expected normal conditions.
  */
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 import { textSummary } from "https://jslib.k6.io/k6-summary/0.0.1/index.js";
@@ -10,7 +10,7 @@ import { check, sleep } from "k6";
 const TARGET_URL =
   __ENV.TEST_TARGET || "https://test-api.k6.io/public/crocodiles/";
 const RAMP_TIME = __ENV.RAMP_TIME || "1s";
-const RUN_TIME = __ENV.RUN_TIME || "2s";
+const RUN_TIME = __ENV.RUN_TIME || "5s";
 const DOWN_TIME = __ENV.RAMP_TIME || "1s";
 const USER_COUNT_RAMP = __ENV.USER_COUNT || 10;
 const USER_COUNT_LOAD = __ENV.USER_COUNT || 20;
@@ -52,7 +52,7 @@ export default function () {
 
 export function handleSummary(data) {
   return {
-    "results/html-report/smoke-scenario-test.html": htmlReport(data, {
+    "results/html-report/averageLoad-scenario-test.html": htmlReport(data, {
       debug: false,
     }),
     stdout: textSummary(data, { indent: " ", enableColors: true }),

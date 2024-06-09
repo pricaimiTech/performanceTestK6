@@ -34,7 +34,7 @@ export default async function () {
     page.locator('input[name="password"]').type("123");
 
     page.screenshot({
-      path: `report/screenshots/screenshot${Date.now()}.png`,
+      path: `results/screenshots/screenshot${Date.now()}.png`,
     });
 
     const submitButton = page.locator('input[type="submit"]');
@@ -51,7 +51,7 @@ export default async function () {
 
 export function handleSummary(data) {
   return {
-    "report/html-report/browserXK6.html": htmlReport(data, { debug: false }),
+    "results/html-report/browserXK6.html": htmlReport(data, { debug: false }),
     stdout: textSummary(data, { indent: " ", enableColors: true }),
   };
 }
