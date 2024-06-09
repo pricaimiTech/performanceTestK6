@@ -1,5 +1,5 @@
 
-name: Load E2E with K6
+name: Load API with K6
 on: [push]
 
 jobs:
