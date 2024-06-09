@@ -56,6 +56,10 @@ export async function browserTest() {
         page.locator("#checkbox-info-display").textContent() ===
         "Thanks for checking the box",
     });
+    
+    page.screenshot({
+      path: `results/screenshots/screenshot${Date.now()}.png`,
+    });
   } finally {
     page.close();
   }

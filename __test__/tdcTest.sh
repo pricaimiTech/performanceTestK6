@@ -1,0 +1,2 @@
+k6 run --out json=results/jsonOutput/averageLoad-scenario-test.json __test__/tdc/averageLoad-scenario-test.js
+k6 run --out json=results/jsonOutput/load-api-browser-test.json __test__/tdc/load-api-browser-test.js

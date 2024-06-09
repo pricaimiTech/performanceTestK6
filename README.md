@@ -6,16 +6,20 @@
 
 Este projeto contém scripts para realizar testes de performance e carga utilizando o k6 em APIs e aplicações web.
 
+## Configuração de ambiente
+
+- Configurando K6 [Link para Documentação](https://grafana.com/docs/k6/latest/set-up/install-k6/)
+
 ## Estrutura do Projeto
 
 - `api-tests/` - Scripts de teste para APIs
-  - `load-test.js` - Teste de carga para API 
-  - `performance-test.js` - Teste de performance para API
+- `e2e/` - Teste Web e API
 - `web-tests/` - Scripts de teste para aplicações web
-  - `load-test.js` - Teste de carga para web
-  - `performance-test.js` - Teste de performance para web
 - `results/` - Resultados dos testes
 - `README.md` - Documentação do projeto
+  - `html-report` - reports html
+  - `jsonOutput`- resultados dos testes exportados em formato json
+  - `screenshots` - prints tirados durante os testes web
 
 ## Executando os Testes
 
@@ -24,13 +28,19 @@ Para executar os testes, utilize os seguintes comandos no terminal:
 Para rodar os testes unitáriamente utilizar o comando
 
 ```
-k6 run api-tests/load-test.js
+k6 run __test__/api-test/load-test.js
 ```
 
-Caso deseje rodar todos os testes com um único comando, basta rodar o arquivo shell
+Caso deseje rodar todos os testes com um único comando, basta rodar o arquivo shell pelo bash
 
 ```
-yarn run test
+bash __test__/tdcTest.sh
+```
+
+ou 
+
+```
+yarn tdc
 ```
 
 ### Análise de Resultados

@@ -4,7 +4,8 @@
   "description": "Este projeto contém scripts para realizar testes de performance e carga utilizando o k6 em APIs e aplicações web.",
   "main": "index.js",
   "scripts": {
-    "test": "bash __test__/start.sh"
+    "test": "bash __test__/test.sh",
+    "tdc": "bash __test__/tdcTest.sh"
   },
   "keywords": [],
   "author": "",
