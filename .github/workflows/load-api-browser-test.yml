@@ -1,4 +1,5 @@
-name: Load API Test with K6
+
+name: Average-load with K6
 on: [push]
 
 jobs:
@@ -10,25 +11,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Run __test__/api-test/load-test.js
+      - name: Run __test__/api-test/load-api-browser-test.js
         uses: grafana/k6-action@v0.2.0
         with:
-          filename: __test__/api-test/load-test.js
-          flags: --out json=load-test.json
+          filename: __test__/api-test/load-api-browser-test.js
+          flags: --out json=load-api-browser-test.json
 
       - name: Upload performance test results
         if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: k6-report-apí-load-test-json
-          path: load-test.json
+          path: load-api-browser-test.json
 
       - name: Upload performance test results
         if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: k6-report-apí-load-test-html
-          path: load-test.html
-
-      
-
+          path: load-api-browser-test.html
