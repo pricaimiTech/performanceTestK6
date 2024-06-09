@@ -10,10 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      
-      - name: Create folder
-        run: |
-          mkdir results/html-report
 
       - name: Run __test__/api-test/load-api-browser-test.js
         uses: grafana/k6-action@v0.2.0
@@ -33,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: k6-report-apí-load-test-html
-          path: load-api-browser-test.html
+          path: results/html-report/load-api-browser-test.html
