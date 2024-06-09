@@ -1,10 +1,10 @@
 
-name: Load API with K6
+name: Load E2E with K6
 on: [push]
 
 jobs:
   k6_local_test:
-    name: Load API Test with K6
+    name: Load E2E Test with K6
     runs-on: ubuntu-latest
 
     steps:
