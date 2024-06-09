@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      
+      - name: Create folder
+        run: |
+          mkdir -p results/html-report
 
       - name: Run __test__/api-test/load-api-browser-test.js
         uses: grafana/k6-action@v0.2.0
