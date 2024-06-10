@@ -8,10 +8,10 @@ import { check, sleep } from "k6";
 const TARGET_URL = __ENV.TEST_TARGET || "https://test.k6.io";
 const RAMP_TIME = __ENV.RAMP_TIME || "1s";
 const RUN_TIME = __ENV.RUN_TIME || "2s";
-const DOWN_TIME = __ENV.RAMP_TIME || "1s";
-const USER_COUNT_RAMP = __ENV.USER_COUNT || 10;
-const USER_COUNT_LOAD = __ENV.USER_COUNT || 20;
-const USER_COUNT_DOWN = __ENV.USER_COUNT || 0;
+const DOWN_TIME = __ENV.DOWN_TIME || "1s";
+const USER_COUNT_RAMP = __ENV.USER_COUNT_RAMP || 10;
+const USER_COUNT_LOAD = __ENV.USER_COUNT_LOAD || 20;
+const USER_COUNT_DOWN = __ENV.USER_COUNT_DOWN || 0;
 const SLEEP = __ENV.SLEEP || 0.5;
 
 export const options = {
